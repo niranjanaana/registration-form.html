@@ -87,7 +87,6 @@
 <body>
     <div class="form-container">
         <h1>Event Registration</h1>
-        
         <form id="myForm">
             <!-- NAME FIELD -->
             <div class="form-group">
@@ -95,14 +94,12 @@
                 <input type="text" id="name" placeholder="Enter your name">
                 <div id="nameError" class="error-message"></div>
             </div>
-            
             <!-- EMAIL FIELD -->
             <div class="form-group">
                 <label for="email">Email *</label>
                 <input type="email" id="email" placeholder="Enter your email">
                 <div id="emailError" class="error-message"></div>
             </div>
-            
             <!-- EVENT SELECTION -->
             <div class="form-group">
                 <label for="event">Select Event *</label>
@@ -110,29 +107,25 @@
                     <option value="">Choose an event...</option>
                     <option value="tech-fest">Tech Festival</option>
                     <option value="cultural-fest">Cultural Event</option>
-                    <option value="sports-meet">Sports Competition</option>
-                    <option value="job-fair">Job Fair</option>
+                    <option value="hackathon">Hackathon</option>
+                    <option value="club orientation">Club Orientation</option>
                 </select>
                 <div id="eventError" class="error-message"></div>
             </div>
-            
             <!-- SUBMIT BUTTON -->
             <button type="submit" class="submit-btn">Register Now</button>
         </form>
-        
         <!-- SUCCESS MESSAGE -->
         <div id="success" class="success">
            Registration Successful! Check your email for details.
         </div>
     </div>
-
     <script>
         const form = document.getElementById('myForm');
         const nameInput = document.getElementById('name');
         const emailInput = document.getElementById('email');
         const eventSelect = document.getElementById('event');
         const successDiv = document.getElementById('success');
-
         form.addEventListener('submit', function(e) {
             e.preventDefault(); // Stop form from submitting normally
             clearErrors();
@@ -150,40 +143,12 @@
                 showError('email', 'emailError', 'Please enter a valid email');
                 isValid = false;
             }
-
             if (eventSelect.value === '') {
                 showError('event', 'eventError', 'Please select an event');
                 isValid = false;
             }
-            
-            if (isValid) {
-                form.style.display = 'none';
-                successDiv.style.display = 'block';
-                setTimeout(() => {
-                    form.style.display = 'block';
-                    successDiv.style.display = 'none';
-                    form.reset();
-                }, 3000);
-            }
         })
-        function showError(inputId, errorId, message) {
-            document.getElementById(inputId).classList.add('error');
-            document.getElementById(errorId).textContent = message;
-        }
-        
-      
-        function clearErrors() {
-            const inputs = ['name', 'email', 'event'];
-            inputs.forEach(id => {
-                document.getElementById(id).classList.remove('error');
-                document.getElementById(id + 'Error').textContent = '';
-            });
-        }
-        
-        
-        function isValidEmail(email) {
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailPattern.test(email);
+        reset.form();
         }
     </script>
 </body>
