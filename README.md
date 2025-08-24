@@ -148,7 +148,7 @@
                 isValid = false;
             }
         })
-        reset.form();
+  form.reset();
         }
     </script>
 </body>
