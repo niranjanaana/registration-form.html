@@ -127,7 +127,7 @@
         const eventSelect = document.getElementById('event');
         const successDiv = document.getElementById('success');
         form.addEventListener('submit', function(e) {
-            e.preventDefault(); // Stop form from submitting normally
+            e.preventDefault(); 
             clearErrors();
             
             let isValid = true;
